@@ -1,0 +1,44 @@
+// $light-theme: (
+//   bg-color: #ffffff,
+//   text-color: #a4a4a4,
+//   primary-color: #5666f4,
+//   secondary-color: #9ca4fc,
+//   border-color: #d4d4d4,
+// );
+
+// $dark-theme: (
+//   bg-color: #ffffff,
+//   text-color:
+// );
+
+:root {
+  --primary-color: #5c24f5;
+  --secondary-color: #f6f6ff;
+  --active-color: #5c24f5;
+  --hover-color: #7181D5;
+  --background-color: #ffffff;
+  --text-color: #290693;
+  --active-text-color: #ffffff;
+  --border-color: #d4d4d4;
+}
+
+[data-theme="dark"] {
+  --primary-color: #1abc9c;
+  --secondary-color: #9b59b6;
+  --background-color: #000000;
+  --text-color: #ffffff;
+}
+
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$active-color: var(--active-color);
+$hover-color: var(--hover-color);
+$background-color: var(--background-color);
+$text-color: var(--text-color);
+$active-text-color: var(--active-text-color);
+$border-color: var(--border-color);
+
+
+
+$border-radius-size: 25px;
+$gap-size: 30px;

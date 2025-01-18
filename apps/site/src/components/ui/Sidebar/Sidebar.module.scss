@@ -1,0 +1,64 @@
+.base {
+  width: 300px;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-color;
+
+  border-top-right-radius: $border-radius-size;
+  border-bottom-right-radius: $border-radius-size;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 50px;
+
+  font-size: 28px;
+  font-weight: 700;
+  color: $active-color;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.navLink {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 10px 10px 10px 20px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: $text-color;
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: $hover-color;
+    color: $active-text-color;
+  }
+
+  &:active {
+    background-color: $active-color;
+    color: $active-text-color;
+  }
+
+  &__active {
+    background-color: $active-color;
+    color: $active-text-color;
+  }
+}

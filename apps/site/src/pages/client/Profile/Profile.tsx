@@ -1,3 +1,5 @@
+import styles from "./Profile.module.scss"
+
 export function Profile() {
-  return <div></div>
+  return <div className={styles.base}>Profile</div>
 }

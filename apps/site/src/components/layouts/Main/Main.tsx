@@ -1,7 +1,9 @@
-import React from "react"
+import { Outlet } from "react-router"
 
-export type MainProps = React.PropsWithChildren
-
-export function Main({ children }: MainProps) {
-  return <div>{children}</div>
+export function Main() {
+  return (
+    <div>
+      <Outlet />
+    </div>
+  )
 }

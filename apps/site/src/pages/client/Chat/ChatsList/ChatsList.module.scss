@@ -1,6 +1,10 @@
 .base {
-  width: 100px;
+  width: 400px;
   height: 100%;
+}
+
+.content {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
