@@ -24,8 +24,8 @@
 
     /* Imports */
     "paths": {
+      "@store/*": ["./src/redux-store/*"],
       "@/*": ["./src/*"],
-      "@store/*": ["./src/redux-store/*"]
     }
   },
   "include": ["src"]

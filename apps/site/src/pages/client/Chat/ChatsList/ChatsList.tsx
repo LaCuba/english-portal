@@ -9,8 +9,12 @@ import {
 
 import styles from "./ChatsList.module.scss"
 import mockImage from "./image.png"
+import { useSelector } from "react-redux"
+import { selectors } from "@store/selectors"
+import _ from "lodash"
 
 export function ChatsList() {
+  const chats = useSelector(selectors.chats)
   return (
     <Card
       title="Список чатов"
@@ -24,12 +28,16 @@ export function ChatsList() {
         placeholder="Search..."
       />
       <div className={styles.list}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={mockImage} />
-          </ListItemAvatar>
-          <ListItemText primary="Name" secondary="message" />
-        </ListItem>
+        {_.map(chats, (chat) => {
+          return (
+            <ListItem key={chat.id} className={styles.listItem} alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar alt="Remy Sharp" src={mockImage} />
+              </ListItemAvatar>
+              <ListItemText primary={chat.name} secondary="message" />
+            </ListItem>
+          )
+        })}
       </div>
     </Card>
   )

@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/Card"
 
 import styles from "./ChatArea.module.scss"
+import { ChatInput } from "@/components/ui/ChatInput"
 
 export function ChatArea() {
   return (
@@ -9,7 +10,10 @@ export function ChatArea() {
       className={styles.base}
       contentClassName={styles.content}
     >
-      Чат
+      <div>
+        
+      </div>
+      <ChatInput />
     </Card>
   )
 }

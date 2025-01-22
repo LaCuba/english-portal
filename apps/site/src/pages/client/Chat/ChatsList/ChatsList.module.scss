@@ -8,3 +8,26 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listItem {
+  cursor: pointer;
+  border-radius: $border-radius-second-size;
+
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: $hover-color;
+    color: $active-text-color;
+  }
+
+  &__active {
+    background-color: $active-color;
+    color: $active-text-color;
+  }
+}
