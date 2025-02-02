@@ -6,6 +6,7 @@
     "start:backend": "turbo start --filter=backend",
     "preview:site": "turbo preview --filter=site",
     "dev:backend": "turbo dev --filter=backend",
+    "build:site": "turbo build --filter=site",
     "build:backend": "turbo build --filter=backend",
     "build": "turbo build",
     "dev": "turbo dev",

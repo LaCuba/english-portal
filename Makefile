@@ -6,3 +6,9 @@ down:
 
 logs:
 	docker compose -f ./docker/compose.yml logs -f
+
+up-dev:
+	docker compose -f ./docker/compose-dev.yml up --build
+
+down-dev:
+	docker compose -f ./docker/compose-dev.yml down
