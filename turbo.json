@@ -2,6 +2,8 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
+      "cache": false,
+      "persistent": false,
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
@@ -10,6 +12,16 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "start": {
+      "cache": false,
+      "persistent": false,
+      "outputLogs": "hash-only"
+    },
+    "preview": {
+      "cache": false,
+      "persistent": false,
+      "outputLogs": "hash-only"
     }
   }
 }

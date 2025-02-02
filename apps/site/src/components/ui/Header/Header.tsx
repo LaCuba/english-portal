@@ -1,20 +1,58 @@
-import { Avatar, Button } from "@mui/material"
-import { green } from "@mui/material/colors"
+import { Button } from "@mui/material"
 import styles from "./Header.module.scss"
+import { AvatarMenu } from "../AvatartMenu"
+import React from "react"
+import { useNavigate } from "react-router"
+import { Logo } from "../Logo"
+import { store } from "@/store"
+import { MODAL_NAME } from "@/store/modals"
 
-const isUser = true
+const isUser = false
+
+export type Props = {
+  withLogo: boolean
+}
 
 //TODO: Исправить на имя пользователя
-export function Header() {
+export function Header({ withLogo }: Props) {
+  const navigate = useNavigate()
+  const setActive = store.useModalStore((state) => state.setActive)
+
+  const menuItems = React.useMemo(() => {
+    return [
+      {
+        label: "Профиль",
+        onClick: () => {
+          navigate("/client/profile")
+        },
+      },
+      {
+        label: "Выйти",
+        onClick: () => {
+          //TODO: Сделать выход пользователя
+        },
+      },
+    ]
+  }, [navigate])
+
   return (
     <div className={styles.base}>
-      <div className={styles.greetings}>Welcome User!</div>
+      {withLogo ? (
+        <Logo className={styles.logo} />
+      ) : (
+        <div className={styles.greetings}>Welcome User!</div>
+      )}
       <div className={styles.control}>
         <div className={styles.navigation}></div>
         {isUser ? (
-          <Avatar sx={{ bgcolor: green[500], width: 50, height: 50 }}>N</Avatar>
+          <AvatarMenu items={menuItems} />
         ) : (
-          <Button variant="contained">Войти</Button>
+          <Button
+            variant="contained"
+            onClick={() => setActive(MODAL_NAME.AUTH)}
+          >
+            Войти
+          </Button>
         )}
       </div>
     </div>

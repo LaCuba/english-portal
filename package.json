@@ -2,16 +2,20 @@
   "name": "english-portal",
   "private": true,
   "scripts": {
-    "start:site": "pnpm dev --filter=site",
+    "start:site": "turbo dev --filter=site",
+    "start:backend": "turbo start --filter=backend",
+    "preview:site": "turbo preview --filter=site",
+    "dev:backend": "turbo dev --filter=backend",
+    "build:backend": "turbo build --filter=backend",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "turbo": "^2.3.3"
+    "eslint": "8.57.0",
+    "prettier": "3.2.5",
+    "turbo": "2.0.5"
   },
   "packageManager": "pnpm@9.4.0"
 }

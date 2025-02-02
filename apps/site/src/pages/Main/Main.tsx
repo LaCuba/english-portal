@@ -1,5 +1,5 @@
-
+import styles from './Main.module.scss'
 
 export function Main() {
-  return <div>Main</div>
+  return <div className={styles.base}>Main</div>
 }

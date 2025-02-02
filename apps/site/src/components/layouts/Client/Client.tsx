@@ -9,7 +9,7 @@ export function Client() {
     <div className={styles.base}>
       <Sidebar navLinks={SIDEBAR_NAV_LINKS} />
       <div className={styles.content}>
-        <Header />
+        <Header withLogo={false} />
         <div className={styles.outlet}>
           <Outlet />
         </div>

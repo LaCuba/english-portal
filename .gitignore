@@ -7,5 +7,5 @@ dist-ssr
 *.local
 .env
 .cache
-server/dist
+backend/dist
 public/dist

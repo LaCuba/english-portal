@@ -1,0 +1,13 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-color;
+
+  padding-left: 10px;
+}

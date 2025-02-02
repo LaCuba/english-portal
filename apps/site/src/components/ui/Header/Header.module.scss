@@ -11,9 +11,13 @@
   border-bottom-left-radius: $border-radius-size;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
 .greetings {
   font-size: 24px;
   font-weight: 600;
   color: $text-color;
 }
-

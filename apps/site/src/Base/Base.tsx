@@ -1,14 +1,21 @@
 import { BrowserRouter } from "react-router"
-import { store } from "../redux-store"
 import { Routes } from "./Routes"
-import { Provider } from "react-redux"
+import { Modal } from "@/components/modals/Modal"
+import { ThemeProvider } from "@mui/material"
+import { theme } from "./theme"
+import { QueryClientProvider } from "@tanstack/react-query"
+import { queryClient } from "@/api"
+
 
 export function Base() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes />
+          <Modal />
+        </BrowserRouter>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
