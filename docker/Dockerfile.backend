@@ -21,7 +21,7 @@ COPY --from=builder /app/out/full/ .
 
 RUN pnpm turbo build
 
-FROM base AS runner
+FROM starter AS runner
 WORKDIR /app
 
 # Don't run production as root

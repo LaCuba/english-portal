@@ -1,0 +1,40 @@
+.base {
+  width: 375px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+
+  background-color: #fff;
+  border-radius: $border-radius-size;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.image {
+  $size: 160px;
+  display: flex;
+  width: $size;
+  max-width: $size;
+  height: $size;
+  max-height: $size;
+}
+
+.name {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: bold;
+  color: $text-color;
+}
+
+.text {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: medium;
+  color: $second-text-color;
+}

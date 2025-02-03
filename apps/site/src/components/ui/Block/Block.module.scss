@@ -1,0 +1,35 @@
+.base {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 60px 36px 36px;
+
+  border: 1px solid #d4dbe3;
+  // background-color: $secondary-color;
+  border-radius: $border-radius-size;
+}
+
+.image {
+  $size: 160px;
+  display: flex;
+  width: $size;
+  max-width: $size;
+  height: $size;
+  max-height: $size;
+}
+
+.title {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: bold;
+  color: $text-color;
+}
+
+.text {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: medium;
+  color: $second-text-color;
+}

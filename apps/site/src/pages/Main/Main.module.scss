@@ -1,0 +1,122 @@
+.base {
+  margin: 0 auto;
+  width: 1200px;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.main {
+  width: 100%;
+  height: 615px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  // gap: 56px;
+  padding-left: 60px;
+
+  // background-image: url(./main_image.png);
+  // height: 602px;
+  // background-repeat: no-repeat;
+  // background-position: 0px -30%;
+  // background-size: auto;
+
+  background-color: #f6f7f9;
+
+  border-radius: $border-radius-size;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-family: Raleway;
+  font-weight: bold;
+  font-size: 80px;
+
+  line-height: 90%;
+  letter-spacing: -1px;
+
+  color: #101566;
+}
+
+.secondTextColor {
+  color: $primary-color;
+}
+
+.subtitle {
+  font-family: Inter;
+  font-weight: medium;
+  font-size: 18px;
+  color: #627A95;
+}
+
+.mainImage {
+  width: 500px;
+  height: 600px;
+}
+
+.mainButton {
+  width: 220px;
+  height: 55px;
+}
+
+.advantages {
+  display: flex;
+  gap: 40px;
+}
+
+
+.feedbacks {
+  $feedbacks_height: 700px;
+  width: 100%;
+  height: $feedbacks_height;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 54px;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100vw;
+    height: $feedbacks_height;
+    background-color: #101566;
+    z-index: -1;
+  }
+}
+
+.feedbackTitle {
+  font-family: Raleway;
+  font-weight: bold;
+  font-size: 42px;
+
+  line-height: 90%;
+  letter-spacing: -1px;
+
+  color: #fff;
+}
+
+.feedbackBlocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
