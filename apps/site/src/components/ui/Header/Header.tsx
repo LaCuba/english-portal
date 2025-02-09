@@ -1,13 +1,15 @@
-import { Button } from "@mui/material"
-import styles from "./Header.module.scss"
-import { AvatarMenu } from "../AvatartMenu"
 import React from "react"
+
 import { useNavigate } from "react-router"
-import { Logo } from "../Logo"
+
+import { api } from "@/api"
 import { store } from "@/store"
 import { MODAL_NAME } from "@/store/modals"
+import { Button } from "@mui/material"
 
-const isUser = false
+import { AvatarMenu } from "../AvatartMenu"
+import { Logo } from "../Logo"
+import styles from "./Header.module.scss"
 
 export type Props = {
   withLogo: boolean
@@ -16,7 +18,10 @@ export type Props = {
 //TODO: Исправить на имя пользователя
 export function Header({ withLogo }: Props) {
   const navigate = useNavigate()
+  const logout = api.auth.useLogout()
   const setActive = store.useModalStore((state) => state.setActive)
+  const isAuth = store.useAuthStore((state) => state.isAuth)
+  const user = store.useAuthStore((state) => state.user)
 
   const menuItems = React.useMemo(() => {
     return [
@@ -29,11 +34,11 @@ export function Header({ withLogo }: Props) {
       {
         label: "Выйти",
         onClick: () => {
-          //TODO: Сделать выход пользователя
+          logout.mutate()
         },
       },
     ]
-  }, [navigate])
+  }, [navigate, logout])
 
   return (
     <div className={styles.base}>
@@ -44,8 +49,8 @@ export function Header({ withLogo }: Props) {
       )}
       <div className={styles.control}>
         <div className={styles.navigation}></div>
-        {isUser ? (
-          <AvatarMenu items={menuItems} />
+        {isAuth ? (
+          <AvatarMenu userName={user?.name} items={menuItems} />
         ) : (
           <Button
             variant="contained"

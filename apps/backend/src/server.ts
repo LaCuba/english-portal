@@ -1,10 +1,11 @@
 import app from "./app"
+import { env } from "./env"
 
-const PORT = process.env.PORT || 3000
+const PORT = env.PORT || 3000
+const HOST = env.HOST || "localhost"
 
-app.listen({ port: PORT }, (err, address) => {
+app.listen({ port: PORT, host: HOST }, (err, address) => {
   if (err) {
-    console.log('ppp')
     app.log.error(err)
     process.exit(1)
   }

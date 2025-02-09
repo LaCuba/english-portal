@@ -1,4 +1,5 @@
 export const MODAL_NAME = {
   AUTH: "AUTH",
   REGISTRATION: "REGISTRATION",
+  ADD_CHAT_GROUP: "ADD_CHAT_GROUP",
 } as const

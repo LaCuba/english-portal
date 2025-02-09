@@ -1,6 +1,7 @@
-import { NavLink } from "react-router"
+import { NavLink, useNavigate } from "react-router"
 import clsx from "clsx"
 import styles from "./Sidebar.module.scss"
+import { Logo } from "../Logo"
 
 export type SidebarNavLink = {
   id: string | number
@@ -14,9 +15,15 @@ export type SidebarProps = {
 }
 
 export function Sidebar(props: SidebarProps) {
+  const navigate = useNavigate()
+
+  function handleLogoClick() {
+    navigate("/")
+  }
+
   return (
     <div className={styles.base}>
-      <div className={styles.logo}>Logo</div>
+      <Logo onClick={handleLogoClick} className={styles.logo} />
       <div className={styles.navLinks}>
         {props.navLinks.map((navLink) => {
           return (

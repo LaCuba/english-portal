@@ -1,3 +1,6 @@
+// import "@types/ws"
+import('ws')
+
 declare namespace NodeJS {
   interface ProcessEnv {
     JWT_SECRET: string
@@ -8,3 +11,7 @@ declare namespace NodeJS {
     DATABASE_URL: string
   }
 }
+
+declare type TokenData = {
+  userId: number 
+} 

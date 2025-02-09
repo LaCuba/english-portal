@@ -17,13 +17,15 @@ export type MenuItem = {
 }
 
 export type Props = {
+  userName?: string
   items: MenuItem[]
 }
 
-export function AvatarMenu({ items }: Props) {
+export function AvatarMenu({ items, userName }: Props) {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null,
   )
+  const userNameLetter = userName?.[0] ?? "N"
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
@@ -36,7 +38,9 @@ export function AvatarMenu({ items }: Props) {
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar sx={{ bgcolor: green[500], width: 50, height: 50 }}>N</Avatar>
+          <Avatar sx={{ bgcolor: green[500], width: 50, height: 50 }}>
+            {userNameLetter}
+          </Avatar>
         </IconButton>
       </Tooltip>
       <Menu

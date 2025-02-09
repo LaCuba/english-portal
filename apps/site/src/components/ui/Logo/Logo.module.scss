@@ -1,6 +1,16 @@
 .base {
+  font-family: Raleway;
+
   font-size: 32px;
   font-weight: 700;
-  letter-spacing: 0.2rem;
   color: $active-color;
+  line-height: 90%;
+  letter-spacing: -2px;
+
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: $hover-color;
+  }
 }

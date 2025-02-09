@@ -1,9 +1,9 @@
 import { FastifyReply, FastifyRequest } from "fastify"
+import { env } from "~/env"
 
-export const authMiddleware = async (request: FastifyRequest, reply: FastifyReply) => {
+export const auth = async (request: FastifyRequest<any>, reply: FastifyReply) => {
   try {
     const accessToken = request.cookies.access_token
-
     if (!accessToken) {
       return reply.status(401).send({ message: "No access token" })
     }
@@ -11,6 +11,10 @@ export const authMiddleware = async (request: FastifyRequest, reply: FastifyRepl
     const decoded = request.server.jwt.verify(accessToken)
 
     request.user = decoded
+    console.log(
+      "accessToken ---==============================================================================->",
+      decoded.userId,
+    )
     return
   } catch (error) {
     const refreshToken = request.cookies.refresh_token
@@ -35,7 +39,10 @@ export const authMiddleware = async (request: FastifyRequest, reply: FastifyRepl
 
       reply.setCookie("access_token", newAccessToken, {
         httpOnly: true,
-        secure: true,
+        secure: env.NODE_ENV === "production",
+        maxAge: 60 * 15,
+        path: "/",
+        sameSite: "lax",
       })
 
       request.user = decoded

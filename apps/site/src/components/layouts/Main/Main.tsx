@@ -1,6 +1,8 @@
-import styles from "./Main.module.scss"
-import { Header } from "@/components/ui/Header"
 import { Outlet } from "react-router"
+
+import { Header } from "@/components/ui/Header"
+
+import styles from "./Main.module.scss"
 
 export function Main() {
   return (

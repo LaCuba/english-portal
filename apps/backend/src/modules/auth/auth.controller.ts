@@ -1,6 +1,9 @@
 import { FastifyRequest, FastifyReply } from "fastify"
 import { services } from "./auth.service"
 import { RegisterInput, LoginInput } from "./auth.types"
+import { env } from "~/env"
+
+//FIXME: СДелать обработку ошибок
 
 async function register(
   request: FastifyRequest<{ Body: RegisterInput }>,
@@ -10,7 +13,10 @@ async function register(
     const user = await services.register(request.server, request.body)
     reply.status(201).send({ user })
   } catch (err) {
-    reply.status(400).send({ error: err.message })
+    console.log(err.message)
+    reply
+      .status(400)
+      .send({ error: "Произошла ошибка обратитесь к администратору" })
   }
 }
 
@@ -26,20 +32,25 @@ async function login(
 
     reply.setCookie("access_token", accessToken, {
       httpOnly: true,
-      secure: true,
+      secure: env.NODE_ENV === 'production',
       maxAge: 60 * 15,
       path: "/",
+      sameSite: 'lax',
     })
 
     reply.setCookie("refresh_token", refreshToken, {
       httpOnly: true,
-      secure: true,
+      secure: env.NODE_ENV === 'production',
       maxAge: 60 * 60 * 24 * 7,
       path: "/",
+      sameSite: 'lax',
     })
     reply.status(200).send({ user })
   } catch (err) {
-    reply.status(400).send({ error: err.message })
+    console.log(err.message)
+    reply
+      .status(400)
+      .send({ error: "Произошла ошибка обратитесь к администратору" })
   }
 }
 
@@ -55,16 +66,27 @@ async function logout(request: FastifyRequest, reply: FastifyReply) {
     reply.clearCookie("refresh_token")
     reply.status(200).send("Logged out successfully")
   } catch (err) {
-    reply.status(400).send({ error: err.message })
+    console.log(err.message)
+    reply
+      .status(400)
+      .send({ error: "Произошла ошибка обратитесь к администратору" })
   }
 }
 
-async function user(request: FastifyRequest, reply: FastifyReply) {
+async function getUser(request: FastifyRequest, reply: FastifyReply) {
   try {
-    reply.status(200).send("Its your data")
+    const user = await services.getUser(
+      request.server,
+      request.user as { userId?: number },
+    )
+
+    reply.status(200).send(user)
   } catch (err) {
-    reply.status(400).send({ error: err.message })
+    console.log(err.message)
+    reply
+      .status(400)
+      .send({ error: "Произошла ошибка обратитесь к администратору" })
   }
 }
 
-export const controllers = { register, login, logout, user }
+export const controllers = { register, login, logout, getUser }

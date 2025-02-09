@@ -1,11 +1,16 @@
+import { Chat } from "@/api/chat/types"
 import { create } from "zustand"
 
 export type Store = {
-  current: string | null
-  setCurrent: (current: string | null) => void
+  current: Chat | null
+  socket: WebSocket | null
+  setCurrent: (current: Chat | null) => void
+  setSocket: (current: WebSocket | null) => void
 }
 
 export const useChatStore = create<Store>((set) => ({
   current: null,
-  setCurrent: (current: string | null) => set(() => ({ current })),
+  socket: null,
+  setCurrent: (current: Chat | null) => set(() => ({ current })),
+  setSocket: (socket: WebSocket | null) => set(() => ({ socket })),
 }))

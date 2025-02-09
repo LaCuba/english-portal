@@ -1,33 +1,32 @@
 import fastify from "fastify"
+
+import fastifyCookie from "@fastify/cookie"
 import fastifyJWT from "@fastify/jwt"
 import fastifyRedis from "@fastify/redis"
+import websocketPlugin from "@fastify/websocket"
+
+import { env } from "./env"
+import { plugins } from "./plugins"
 import { registerRoutes } from "./routes"
-import { prismaPlugin } from "./prisma/client"
-import fastifyCookie from "@fastify/cookie"
 
 const app = fastify({ logger: true })
 
-app.register(fastifyJWT, { secret: process.env.JWT_SECRET })
+app.register(plugins.cors)
+app.register(plugins.jwt)
+app.register(fastifyJWT, { secret: env.JWT_SECRET })
 app.register(fastifyRedis, {
-  url: process.env.REDIS_URL,
+  url: env.REDIS_URL,
 })
-app.register(prismaPlugin)
+app.register(websocketPlugin)
+app.register(plugins.prisma)
 
 app.register(fastifyCookie, {
   secret: "cookie-secret",
   parseOptions: {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: env.NODE_ENV === "production",
     sameSite: "strict",
   },
-})
-
-app.decorate("verifyJWT", async (request: any, reply: any) => {
-  try {
-    await request.jwtVerify()
-  } catch (err) {
-    reply.code(401).send({ error: "Unauthorized" })
-  }
 })
 
 registerRoutes(app)

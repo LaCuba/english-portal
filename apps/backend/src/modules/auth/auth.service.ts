@@ -1,14 +1,9 @@
 import { FastifyInstance } from "fastify"
 import { hashPassword, verifyPassword } from "./auth.utils"
-import {
-  RegisterInput,
-  LoginInput,
-  AuthTokenPayload,
-  LogoutInput,
-} from "./auth.types"
+import { RegisterInput, LoginInput, LogoutInput } from "./auth.types"
 
 async function register(app: FastifyInstance, input: RegisterInput) {
-  const { email, password, name } = input
+  const { email, password: inputPassword, name } = input
 
   const user = await app.prisma.user.findUnique({
     where: {
@@ -21,7 +16,7 @@ async function register(app: FastifyInstance, input: RegisterInput) {
   }
 
   try {
-    const hashedPassword = await hashPassword(password)
+    const hashedPassword = await hashPassword(inputPassword)
     const user = await app.prisma.user.create({
       data: {
         password: hashedPassword,
@@ -29,7 +24,7 @@ async function register(app: FastifyInstance, input: RegisterInput) {
         name,
       },
     })
-    return user
+    return { email: user.email, name: user.name }
   } catch (error) {
     throw new Error(`Error --->, ${error}`)
   }
@@ -71,4 +66,20 @@ async function logout(app: FastifyInstance, input: LogoutInput) {
   return await app.redis.del(`refresh_token_${decoded.userId}`)
 }
 
-export const services = { register, login, logout }
+async function getUser(app: FastifyInstance, user: { userId?: number }) {
+  if (!user?.userId) throw new Error("Invalid user id")
+
+  const foundUser = await app.prisma.user.findUnique({
+    where: { id: user.userId },
+  })
+
+  if (!foundUser) {
+    throw new Error("Not found user")
+  }
+
+  return {
+    user: { id: user?.userId, email: foundUser.email, name: foundUser.name },
+  }
+}
+
+export const services = { register, login, logout, getUser }

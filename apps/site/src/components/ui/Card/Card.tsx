@@ -4,6 +4,7 @@ import React from "react"
 
 export type Props = React.PropsWithChildren<{
   title: string
+  rightHeader?: React.ReactNode
   className?: string
   contentClassName?: string
 }>
@@ -11,7 +12,10 @@ export type Props = React.PropsWithChildren<{
 export function Card(props: Props) {
   return (
     <div className={clsx(styles.base, props.className)}>
-      <div className={styles.title}>{props.title}</div>
+      <div className={styles.header}>
+        <div className={styles.title}>{props.title}</div>
+        {props.rightHeader}
+      </div>
       <div className={clsx(styles.content, props.contentClassName)}>
         {props.children}
       </div>

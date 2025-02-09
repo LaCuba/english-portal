@@ -1,1 +1,2 @@
-export * from './query'
+export * from "./query"
+export * as api from "./api"

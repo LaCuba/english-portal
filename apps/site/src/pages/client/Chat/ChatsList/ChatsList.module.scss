@@ -11,6 +11,7 @@
 
 .list {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 10px;
 }
@@ -30,4 +31,9 @@
     background-color: $active-color;
     color: $active-text-color;
   }
+}
+
+.noChatMessage {
+  padding-top: 50px;
+  color: $second-text-color;
 }

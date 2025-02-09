@@ -23,6 +23,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "typings"],
+  "include": ["src/**/*", "typings", "@types/ws"],
   "exclude": ["node_modules"]
 }

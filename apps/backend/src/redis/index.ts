@@ -1,24 +1,21 @@
-// src/plugins/redis.ts
-import Redis from "ioredis"
-import { FastifyPluginAsync } from "fastify"
+// import Redis from "ioredis"
+// import { FastifyPluginAsync } from "fastify"
+// import { env } from "~/env"
 
-// Плагин Redis
-const redisPlugin: FastifyPluginAsync = async (fastify, options) => {
-  const redis = new Redis({
-    host: process.env.REDIS_HOST, // Адрес Redis-сервера
-    port: process.env.REDIS_PORT, // Порт Redis
-    password: process.env.REDIS_HOST, // Если Redis защищен паролем
-    db: 0, // Используемая база данных Redis
-  })
+// const redisPlugin: FastifyPluginAsync = async (fastify, options) => {
+//   const redis = new Redis({
+//     host: env.REDIS_HOST,
+//     port: env.REDIS_PORT,
+//     // password: env.REDIS_HOST,
+//     db: 0,
+//   })
 
-  // Инжектим Redis в контекст Fastify
-  fastify.decorate("redis", redis)
+//   fastify.decorate("redis", redis)
 
-  // Очистка подключения при завершении работы
-  fastify.addHook("onClose", async (instance, done) => {
-    await redis.quit()
-    done()
-  })
-}
+//   fastify.addHook("onClose", async (instance, done) => {
+//     await redis.quit()
+//     done()
+//   })
+// }
 
-export default redisPlugin
+// export default redisPlugin

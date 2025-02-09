@@ -2,12 +2,12 @@ import fp from "fastify-plugin"
 import { PrismaClient } from "@prisma/client"
 import { FastifyPluginAsync } from "fastify"
 
-export const prismaPlugin: FastifyPluginAsync = fp(async (app) => {
-  const prisma = new PrismaClient()
+export const prismaClient = new PrismaClient()
 
-  await prisma.$connect()
+export const prisma: FastifyPluginAsync = fp(async (app) => {
+  await prismaClient.$connect()
 
-  app.decorate("prisma", prisma)
+  app.decorate("prisma", prismaClient)
 
   app.addHook("onClose", async (server) => {
     await server.prisma.$disconnect()
