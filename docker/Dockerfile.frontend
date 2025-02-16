@@ -8,7 +8,10 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
 RUN npm i -g turbo
 COPY . .
-RUN turbo prune backend --docker
+RUN turbo prune site --docker
+
+ENV NODE_ENV=production
+ENV API_URL=${API_URL}
 
 RUN pnpm i --frozen-lockfile
 

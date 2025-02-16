@@ -3,7 +3,7 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 
 FROM starter AS base
-RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
+RUN npm i -g pnpm@9.4.0
 RUN npm i -g turbo
 
 FROM base AS builder
@@ -21,13 +21,16 @@ COPY --from=builder /app/out/full/ .
 
 RUN pnpm turbo build
 
-FROM starter AS runner
+FROM base AS runner
 WORKDIR /app
 
-# Don't run production as root
+COPY --from=installer /app .
+RUN pnpm prisma:generate
+
+# # Don't run production as root
 RUN addgroup --system --gid 1001 fastify
 RUN adduser --system --uid 1001 fastify
 USER fastify
-COPY --from=installer /app .
 
-CMD node apps/backend/dist/src/server.js
+# CMD pnpm start:backend
+CMD node ./apps/backend/dist/src/server.js

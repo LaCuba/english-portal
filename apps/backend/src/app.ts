@@ -16,7 +16,12 @@ app.register(plugins.jwt)
 app.register(fastifyJWT, { secret: env.JWT_SECRET })
 app.register(fastifyRedis, {
   url: env.REDIS_URL,
-})
+}).after((err) => {
+  if (err) {
+    console.error('Redis connection error:', err);
+    process.exit(1);
+  }
+});
 app.register(websocketPlugin)
 app.register(plugins.prisma)
 

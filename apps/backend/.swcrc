@@ -8,6 +8,9 @@
     },
     "target": "es2020",
     "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
     "loose": false,
     "minify": {
       "compress": false,

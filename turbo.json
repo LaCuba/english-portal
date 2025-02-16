@@ -22,6 +22,11 @@
       "cache": false,
       "persistent": false,
       "outputLogs": "hash-only"
+    },
+    "prisma:generate": {
+      "cache": false,
+      "persistent": false,
+      "outputLogs": "hash-only"
     }
   }
 }

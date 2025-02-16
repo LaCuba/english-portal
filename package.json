@@ -8,6 +8,7 @@
     "dev:backend": "turbo dev --filter=backend",
     "build:site": "turbo build --filter=site",
     "build:backend": "turbo build --filter=backend",
+    "prisma:generate": "turbo prisma:generate --filter=backend",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
