@@ -7,6 +7,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
 RUN npm i -g turbo
+RUN npm i -g typescript
 COPY . .
 RUN turbo prune site --docker
 
