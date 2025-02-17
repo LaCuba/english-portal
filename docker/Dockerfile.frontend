@@ -1,28 +1,32 @@
-FROM node:22-alpine AS base
+FROM node:22-alpine AS starter
 
-FROM base AS builder
+FROM starter AS base
 RUN apk update
 RUN apk add --no-cache libc6-compat
-
-WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
+RUN npm i -g pnpm@9.4.0
 RUN npm i -g turbo
 RUN npm i -g typescript
+
+
+FROM base AS builder
+WORKDIR /app
 COPY . .
 RUN turbo prune site --docker
 
-ENV NODE_ENV=production
-ENV API_URL=${API_URL}
+FROM base AS installer
+WORKDIR /app
 
+COPY --from=builder /app/out/json/ .
 RUN pnpm i --frozen-lockfile
 
-RUN pnpm turbo build --filter=site
-RUN pnpm prune --prod --no-optional
+COPY --from=builder /app/out/full/ .
 
-RUN rm -rf ./**/*/src
+RUN pnpm turbo build
+
+ENV NODE_ENV=production
 
 FROM nginx:stable
 
-COPY --from=builder app/apps/site/dist /usr/share/nginx/html
+COPY --from=installer app/apps/site/dist /usr/share/nginx/html
 
 EXPOSE 80
