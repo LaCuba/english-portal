@@ -5,8 +5,6 @@ import { env } from "~/env"
 export const cors = fp(async (fastify) => {
   fastify.register(fastifyCors, {
     origin: (origin, callback) => {
-      console.log("env.FRONTEND_URL ---->", [env.FRONTEND_URL])
-      console.log("origin ---->", origin)
       if (!origin || [env.FRONTEND_URL].includes(origin)) {
         callback(null, true)
       } else {

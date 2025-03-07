@@ -1,7 +1,9 @@
 import clsx from "clsx"
-import styles from "./Feedback.module.scss"
+
 import { Avatar } from "@mui/material"
 import { green } from "@mui/material/colors"
+
+import styles from "./Feedback.module.scss"
 
 export type Props = {
   name: string

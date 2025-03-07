@@ -8,7 +8,10 @@ import { Modal } from "@/components/ui/Modal"
 import { typings } from "@/helpers"
 import { store } from "@/store"
 import { MODAL_NAME } from "@/store/modals"
-import { Button, TextField } from "@mui/material"
+import {
+  Button,
+  TextField,
+} from "@mui/material"
 
 import styles from "./Registration.module.scss"
 

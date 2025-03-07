@@ -1,4 +1,12 @@
+import clsx from "clsx"
+
+import { api } from "@/api"
+import { Chat } from "@/api/chat/types"
 import { Card } from "@/components/ui/Card"
+import { __ } from "@/helpers"
+import { store } from "@/store"
+import { MODAL_NAME } from "@/store/modals"
+import AddIcon from "@mui/icons-material/Add"
 import {
   Avatar,
   IconButton,
@@ -7,17 +15,9 @@ import {
   ListItemText,
   TextField,
 } from "@mui/material"
-import AddIcon from "@mui/icons-material/Add"
 
 import styles from "./ChatsList.module.scss"
 import mockImage from "./image.png"
-
-import { api } from "@/api"
-import { store } from "@/store"
-import { MODAL_NAME } from "@/store/modals"
-import { __ } from "@/helpers"
-import clsx from "clsx"
-import { Chat } from "@/api/chat/types"
 
 export function ChatsList() {
   const setActive = store.useModalStore((state) => state.setActive)

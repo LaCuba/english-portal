@@ -1,6 +1,5 @@
-import { Chat } from '@mui/icons-material';
-import FolderIcon from '@mui/icons-material/Folder';
-
+import { Chat } from "@mui/icons-material"
+import FolderIcon from "@mui/icons-material/Folder"
 
 export const SIDEBAR_NAV_LINKS = [
   {

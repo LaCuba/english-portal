@@ -1,5 +1,9 @@
+import {
+  Navigate,
+  Outlet,
+} from "react-router"
+
 import { store } from "@/store"
-import { Navigate, Outlet } from "react-router"
 
 export function Private() {
   const isAuth = store.useAuthStore((state) => state.isAuth)

@@ -1,3 +1,5 @@
+import React from "react"
+
 import { __ } from "@/helpers"
 import {
   Avatar,
@@ -9,7 +11,6 @@ import {
   Typography,
 } from "@mui/material"
 import { green } from "@mui/material/colors"
-import React from "react"
 
 export type MenuItem = {
   label: string

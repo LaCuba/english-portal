@@ -1,8 +1,10 @@
 import { Outlet } from "react-router"
-import styles from "./Client.module.scss"
-import { Sidebar } from "../../ui/Sidebar"
-import { SIDEBAR_NAV_LINKS } from "./const"
+
 import { Header } from "@/components/ui/Header"
+
+import { Sidebar } from "../../ui/Sidebar"
+import styles from "./Client.module.scss"
+import { SIDEBAR_NAV_LINKS } from "./const"
 
 export function Client() {
   return (

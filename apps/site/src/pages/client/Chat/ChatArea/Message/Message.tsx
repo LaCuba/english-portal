@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import dayjs from "dayjs"
 import isToday from "dayjs/plugin/isToday"
+
 import styles from "./Message.module.scss"
 
 export type Props = {

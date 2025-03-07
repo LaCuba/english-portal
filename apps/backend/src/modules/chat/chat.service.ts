@@ -2,7 +2,6 @@ import { FastifyInstance } from "fastify"
 
 import {
   CreateGroupInput,
-  CreateMessageInput,
   LoadMoreMessagesInput,
 } from "./chat.types"
 
@@ -73,7 +72,6 @@ async function createRoom(
   } catch (error) {
     console.error("Error creating room:", error)
     throw new Error("Error creating room")
-    // connection.send(JSON.stringify({ error: 'Failed to create room' }));
   }
 }
 
@@ -89,92 +87,8 @@ async function getRooms(app: FastifyInstance, data: TokenData) {
   } catch (error) {
     console.error("Error creating room:", error)
     throw new Error("Error creating room")
-    // connection.send(JSON.stringify({ error: 'Failed to create room' }));
   }
 }
-
-// function joinRoom(app: FastifyInstance, data: any) {
-//   const { roomId, userId } = data
-//   console.log(`User ${userId} joined room ${roomId}`)
-//   connection.socket.send(JSON.stringify({ event: "user_joined", userId }))
-// }
-
-// function handleJoinRoom(connection: any, data: any) {
-//   const { roomId, userId } = data
-//   console.log(`User ${userId} joined room ${roomId}`)
-//   connection.socket.send(JSON.stringify({ event: "user_joined", userId }))
-// }
-
-// async function handleChatMessage(connection: any, data: ChatMessage) {
-//   try {
-//     const chatMessage = await prisma.message.create({
-//       data: { content: data.message, userId: data.userId, roomId: data.roomId },
-//     })
-//     // Cache the message in Redis
-//     await redisClient.lpush(
-//       `room:${data.roomId}:messages`,
-//       JSON.stringify(chatMessage),
-//     )
-//     connection.socket.send(
-//       JSON.stringify({ event: "new_message", chatMessage }),
-//     )
-//   } catch (error) {
-//     console.error("Error saving message:", error)
-//   }
-// }
-
-// async function handleFetchMessages(
-//   connection: any,
-//   data: FetchMessagesRequest,
-// ) {
-//   const { roomId, page = 1, limit = 10 } = data
-//   try {
-//     const start = (page - 1) * limit
-//     const end = start + limit - 1
-
-//     // Fetch from Redis first
-//     const cachedMessages = await redisClient.lrange(
-//       `room:${roomId}:messages`,
-//       start,
-//       end,
-//     )
-
-//     if (cachedMessages.length > 0) {
-//       const messages = cachedMessages.map((msg) => JSON.parse(msg))
-//       connection.socket.send(
-//         JSON.stringify({ event: "messages_fetched", messages }),
-//       )
-//     } else {
-//       const messages = await prisma.message.findMany({
-//         where: { roomId },
-//         orderBy: { createdAt: "desc" },
-//         skip: start,
-//         take: limit,
-//       })
-//       connection.socket.send(
-//         JSON.stringify({ event: "messages_fetched", messages }),
-//       )
-//     }
-//   } catch (error) {
-//     console.error("Error fetching messages:", error)
-//     connection.socket.send(
-//       JSON.stringify({ error: "Failed to fetch messages" }),
-//     )
-//   }
-// }
-
-// async function getMessages(app: FastifyInstance, roomId: number) {
-//   return app.prisma.message.findMany({ where: { roomId } })
-// }
-
-// async function createMessage(
-//   app: FastifyInstance,
-//   { roomId, userId, message }: CreateMessageInput,
-// ) {
-//   return app.prisma.message.create({
-//     data: { roomId, userId, content: message },
-//   })
-// }
 
 export const services = {
   loadMoreMessages,

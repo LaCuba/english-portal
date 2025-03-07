@@ -1,6 +1,6 @@
 import styles from "./Chat.module.scss"
-import { ChatsList } from "./ChatsList"
 import { ChatArea } from "./ChatArea"
+import { ChatsList } from "./ChatsList"
 
 export function Chat() {
   return (

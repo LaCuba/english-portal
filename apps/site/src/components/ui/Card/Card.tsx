@@ -1,6 +1,8 @@
-import clsx from "clsx"
-import styles from "./Card.module.scss"
 import React from "react"
+
+import clsx from "clsx"
+
+import styles from "./Card.module.scss"
 
 export type Props = React.PropsWithChildren<{
   title: string

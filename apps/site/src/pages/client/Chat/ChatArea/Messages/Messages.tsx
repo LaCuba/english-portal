@@ -1,9 +1,10 @@
 import React from "react"
 
+import { __, utils } from "@/helpers"
+import { store } from "@/store"
+
 import { Message } from "../Message"
 import styles from "./Messages.module.scss"
-import { store } from "@/store"
-import { __, utils } from "@/helpers"
 
 type Message = {
   id: number

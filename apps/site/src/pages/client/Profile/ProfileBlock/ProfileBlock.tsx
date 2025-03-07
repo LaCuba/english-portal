@@ -1,7 +1,8 @@
-import { Avatar } from "@mui/material"
-import styles from "./ProfileBlock.module.scss"
-import { green } from "@mui/material/colors"
 import { store } from "@/store"
+import { Avatar } from "@mui/material"
+import { green } from "@mui/material/colors"
+
+import styles from "./ProfileBlock.module.scss"
 
 export function ProfileBlock() {
   const user = store.useAuthStore((state) => state.user)

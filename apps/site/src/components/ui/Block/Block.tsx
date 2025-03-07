@@ -1,6 +1,8 @@
-import clsx from "clsx"
-import styles from "./Block.module.scss"
 import React from "react"
+
+import clsx from "clsx"
+
+import styles from "./Block.module.scss"
 
 export type Props = {
   title: string

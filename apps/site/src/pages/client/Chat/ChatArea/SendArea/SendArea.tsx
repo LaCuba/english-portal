@@ -1,8 +1,10 @@
-import SendIcon from "@mui/icons-material/Send"
-import styles from "./SendArea.module.scss"
-import { Button, TextField } from "@mui/material"
-import { store } from "@/store"
 import React from "react"
+
+import { store } from "@/store"
+import SendIcon from "@mui/icons-material/Send"
+import { Button, TextField } from "@mui/material"
+
+import styles from "./SendArea.module.scss"
 
 export function SendArea() {
   const socket = store.useChatStore((state) => state.socket)

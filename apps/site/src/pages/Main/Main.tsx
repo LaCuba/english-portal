@@ -1,11 +1,12 @@
-import { Button } from "@mui/material"
-import styles from "./Main.module.scss"
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
-import mainImage from "./images/main_image.png"
-import { __ } from "@/helpers"
 import { Block } from "@/components/ui/Block"
-import { ADVANTAGES, FEEDBACKS } from "./const"
 import { Feedback } from "@/components/ui/Feedback"
+import { __ } from "@/helpers"
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
+import { Button } from "@mui/material"
+
+import { ADVANTAGES, FEEDBACKS } from "./const"
+import mainImage from "./images/main_image.png"
+import styles from "./Main.module.scss"
 
 export function Main() {
   return (

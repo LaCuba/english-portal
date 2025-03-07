@@ -1,7 +1,8 @@
-import { NavLink, useNavigate } from "react-router"
 import clsx from "clsx"
-import styles from "./Sidebar.module.scss"
+import { NavLink, useNavigate } from "react-router"
+
 import { Logo } from "../Logo"
+import styles from "./Sidebar.module.scss"
 
 export type SidebarNavLink = {
   id: string | number

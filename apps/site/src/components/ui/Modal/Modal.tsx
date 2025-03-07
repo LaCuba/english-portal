@@ -1,7 +1,9 @@
-import { IconButton, Modal as MuiModal } from "@mui/material"
-import styles from "./Modal.module.scss"
-import { Close } from "@mui/icons-material"
 import clsx from "clsx"
+
+import { Close } from "@mui/icons-material"
+import { IconButton, Modal as MuiModal } from "@mui/material"
+
+import styles from "./Modal.module.scss"
 
 export type Props = React.PropsWithChildren<{
   isOpen?: boolean

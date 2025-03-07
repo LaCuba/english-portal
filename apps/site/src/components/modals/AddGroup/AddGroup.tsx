@@ -3,9 +3,17 @@ import React from "react"
 import { api } from "@/api"
 import { FieldWrap } from "@/components/ui/FieldWrap"
 import { Modal } from "@/components/ui/Modal"
-import { __, typings } from "@/helpers"
+import {
+  __,
+  typings,
+} from "@/helpers"
 import { store } from "@/store"
-import { Button, MenuItem, Select, TextField } from "@mui/material"
+import {
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material"
 
 import styles from "./AddGroup.module.scss"
 
